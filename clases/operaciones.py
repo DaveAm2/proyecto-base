@@ -37,5 +37,37 @@ class Operaciones:
         
     def mostrarResultado(self):
         print(self.resultado)
-        
-        
+
+if __name__ == "__main__":
+    op = Operaciones()
+    op.leerNumeros()
+
+    print("\nSeleccione la operación:")
+    print("1. Sumar")
+    print("2. Restar")
+    print("3. Multiplicar")
+    print("4. Dividir")
+    print("5. Módulo")
+
+    opcion = input("Opción (1-5): ")
+
+    if opcion == "1":
+        op.sumar()
+    elif opcion == "2":
+        op.restar()
+    elif opcion == "3":
+        op.multiplicar()
+    elif opcion == "4":
+        try:
+            op.dividir()
+        except ZeroDivisionError:
+            op.resultado = "Error: No se puede dividir entre cero."
+    elif opcion == "5":
+        try:
+            op.modulo()
+        except ZeroDivisionError:
+            op.resultado = "Error: No se puede calcular el módulo con divisor cero."
+    else:
+        op.resultado = "Opción inválida."
+
+    op.mostrarResultado()
